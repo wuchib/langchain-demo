@@ -71,9 +71,9 @@ const fewShotPrompt = new FewShotChatMessagePromptTemplate({
 // ])
 
 const finalPrompt = ChatPromptTemplate.fromMessages([
-  fewShotPrompt,
+  ...await fewShotPrompt.formatMessages({}),
   new MessagesPlaceholder('history'),
-  ['user', '{input}'],
+  ['user', '{input}'],  
 ])
 
 // const promptValue = await prompt.invoke({
